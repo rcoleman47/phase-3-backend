@@ -5,3 +5,10 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 run ApplicationController
+use LineItemsController
+use EstimatesController
+use BidsController
+use ContractsController
+use SubcontractorsController
+use ProjectsController
+use GeneralContractorsController
