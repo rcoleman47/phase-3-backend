@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem 'tux'
 gem 'faker'
 gem 'rack-contrib'
+gem 'sinatra-cross_origin', '~> 0.4.0'
 
 group :test do
   gem 'rspec'

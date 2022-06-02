@@ -8,6 +8,7 @@ use Rack::JSONBodyParser
 
 
 run ApplicationController
+use SessionsController
 use LineItemsController
 use EstimatesController
 use SubcontractorsController
