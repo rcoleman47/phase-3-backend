@@ -1,37 +1,37 @@
 class SubcontractorsController < ApplicationController
 
-  # GET: /subcontractors
+  # GET: 
   get "/subcontractors" do
-    erb :"/subcontractors/index.html"
+    Subcontractor.all.to_json
   end
 
-  # GET: /subcontractors/new
-  get "/subcontractors/new" do
-    erb :"/subcontractors/new.html"
-  end
-
-  # POST: /subcontractors
+  # POST:
   post "/subcontractors" do
-    redirect "/subcontractors"
+    new_sub = Subcontractor.create(
+      company_name: params[:company_name],
+      trade: params[:trade],
+      address: params[:address],
+      email: params[:email],
+      phone_number: params[:phone_number]
+    )
   end
 
-  # GET: /subcontractors/5
-  get "/subcontractors/:id" do
-    erb :"/subcontractors/show.html"
-  end
-
-  # GET: /subcontractors/5/edit
-  get "/subcontractors/:id/edit" do
-    erb :"/subcontractors/edit.html"
-  end
-
-  # PATCH: /subcontractors/5
+  # PATCH:
   patch "/subcontractors/:id" do
-    redirect "/subcontractors/:id"
+    edit_sub = Subcontractor.find(params[:id]).update(
+      company_name: params[:company_name],
+      trade: params[:trade],
+      address: params[:address],
+      email: params[:email],
+      phone_number: params[:phone_number]
+    )
+    edit_sub.to_json
   end
 
-  # DELETE: /subcontractors/5/delete
-  delete "/subcontractors/:id/delete" do
-    redirect "/subcontractors"
+  # DELETE: 
+  delete "/subcontractors/:id" do
+    delete_sub = Subcontractor.find(params[:id])
+    delete_sub.destroy
+    delete_sub.to_json
   end
 end

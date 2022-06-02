@@ -59,11 +59,11 @@ d = Project.create(
   )
 
 
-framer = Subcontractor.create(company_name: "Framer", trade: "Framing", address: Faker::Address.street_address, email: "framer@framing.com", password_digest: Faker::Code.asin)
-painter = Subcontractor.create(company_name: "Painter", trade: "Painting", address: Faker::Address.street_address, email: "painter@painting.com", password_digest: Faker::Code.asin)
-flooring = Subcontractor.create(company_name: "Resilient Floors", trade: "Flooring", address: Faker::Address.street_address, email: "resilientfloors@flooring.com", password_digest: Faker::Code.asin)
-electrician = Subcontractor.create(company_name: "Electrician", trade: "Electrical", address: Faker::Address.street_address, email: "electrician@electrical.com", password_digest: Faker::Code.asin)
-mechanical = Subcontractor.create(company_name: "Mechanical", trade: "Total Mechanical", address: Faker::Address.street_address, email: "mechanical@totalmechanical.com", password_digest: Faker::Code.asin)
+framer = Subcontractor.create(company_name: "Framer", trade: "Framing", address: Faker::Address.street_address, email: "framer@framing.com", phone_number: Faker::PhoneNumber.cell_phone)
+painter = Subcontractor.create(company_name: "Painter", trade: "Painting", address: Faker::Address.street_address, email: "painter@painting.com", phone_number: Faker::PhoneNumber.cell_phone)
+flooring = Subcontractor.create(company_name: "Resilient Floors", trade: "Flooring", address: Faker::Address.street_address, email: "resilientfloors@flooring.com", phone_number: Faker::PhoneNumber.cell_phone)
+electrician = Subcontractor.create(company_name: "Electrician", trade: "Electrical", address: Faker::Address.street_address, email: "electrician@electrical.com", phone_number: Faker::PhoneNumber.cell_phone)
+mechanical = Subcontractor.create(company_name: "Mechanical", trade: "Total Mechanical", address: Faker::Address.street_address, email: "mechanical@totalmechanical.com", phone_number: Faker::PhoneNumber.cell_phone)
 
 Estimate.create(total: 1250000, project_id: a.id)
 Estimate.create(total: 2220000, project_id: b.id)

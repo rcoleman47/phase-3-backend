@@ -1,37 +1,21 @@
+require 'pry'
 class GeneralContractorsController < ApplicationController
+  set default_content_type: 'application/json'
 
-  # GET: /general_contractors
-  get "/general_contractors" do
-    erb :"/general_contractors/index.html"
-  end
+  get '/general_contractors'do
+    GeneralContractor.all.to_json
+  end 
 
-  # GET: /general_contractors/new
-  get "/general_contractors/new" do
-    erb :"/general_contractors/new.html"
-  end
-
-  # POST: /general_contractors
+  # POST: create account
   post "/general_contractors" do
-    redirect "/general_contractors"
+    new_gc = GeneralContractor.create(
+      company_name: params[:company_name],
+      address: params[:address],
+      email: params[:email],
+      password_digest: params[:password_digest]
+    )
+    session[:id] = new_gc.id
+    new_gc.to_json
   end
 
-  # GET: /general_contractors/5
-  get "/general_contractors/:id" do
-    erb :"/general_contractors/show.html"
-  end
-
-  # GET: /general_contractors/5/edit
-  get "/general_contractors/:id/edit" do
-    erb :"/general_contractors/edit.html"
-  end
-
-  # PATCH: /general_contractors/5
-  patch "/general_contractors/:id" do
-    redirect "/general_contractors/:id"
-  end
-
-  # DELETE: /general_contractors/5/delete
-  delete "/general_contractors/:id/delete" do
-    redirect "/general_contractors"
-  end
 end

@@ -10,22 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_01_042420) do
-  create_table "bids", force: :cascade do |t|
-    t.string "scope"
-    t.float "amount"
-    t.string "subcontractor_id"
-    t.integer "estimate_id"
-  end
-
-  create_table "contracts", force: :cascade do |t|
-    t.boolean "executed"
-    t.integer "general_contractor_id"
-    t.integer "project_id"
-    t.integer "subcontractor_id"
-    t.float "amount"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2022_06_01_145934) do
   create_table "estimates", force: :cascade do |t|
     t.float "total"
     t.integer "project_id"
@@ -66,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_01_042420) do
     t.string "trade"
     t.string "address"
     t.string "email"
-    t.string "password_digest"
+    t.string "phone_number"
   end
 
 end

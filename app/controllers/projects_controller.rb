@@ -2,36 +2,48 @@ class ProjectsController < ApplicationController
 
   # GET: /projects
   get "/projects" do
-    erb :"/projects/index.html"
-  end
-
-  # GET: /projects/new
-  get "/projects/new" do
-    erb :"/projects/new.html"
+    Project.all.to_json
   end
 
   # POST: /projects
   post "/projects" do
-    redirect "/projects"
+    new_project = Project.create(
+      title: params[:title],
+      location: params[:location],
+      description: params[:description],
+      sector: params[:sector],
+      phase: params[:phase],
+      size: params[:size],
+      duration: params[:duration],
+      start_date: params[:start_date],
+      general_contractor_id: params[:general_contractor_id]
+    )
+    new_project.to_json
   end
 
-  # GET: /projects/5
+  # GET: 
   get "/projects/:id" do
-    erb :"/projects/show.html"
+    Project.find(params[:id]).to_json
   end
 
-  # GET: /projects/5/edit
-  get "/projects/:id/edit" do
-    erb :"/projects/edit.html"
-  end
-
-  # PATCH: /projects/5
+  # PATCH: 
   patch "/projects/:id" do
-    redirect "/projects/:id"
+    project = Project.find(params[:id]).update(
+      title: params[:title],
+      location: params[:location],
+      description: params[:description],
+      sector: params[:sector],
+      phase: params[:phase],
+      size: params[:size],
+      duration: params[:duration],
+      start_date: params[:start_date]
+    )
+    project.to_json
   end
 
-  # DELETE: /projects/5/delete
-  delete "/projects/:id/delete" do
-    redirect "/projects"
+  # DELETE: 
+  delete "/projects/:id" do
+   project = Project.find(params[:id]).destroy
+   project.to_json
   end
 end

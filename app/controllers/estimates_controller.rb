@@ -2,36 +2,21 @@ class EstimatesController < ApplicationController
 
   # GET: /estimates
   get "/estimates" do
-    erb :"/estimates/index.html"
+    Estimate.all.to_json
   end
 
-  # GET: /estimates/new
-  get "/estimates/new" do
-    erb :"/estimates/new.html"
-  end
-
-  # POST: /estimates
   post "/estimates" do
-    redirect "/estimates"
+    Estimate.create(
+      project_id: params[:project_id],
+      total: params[:total]
+    )
   end
 
-  # GET: /estimates/5
-  get "/estimates/:id" do
-    erb :"/estimates/show.html"
-  end
+  # patch "/estimates/:id" do
+  #   estimate = Estimate.find_by(params[:id]).update(
+  #     total: params[:total]
+  #   )
+  #   estimate.to_json
+  # end
 
-  # GET: /estimates/5/edit
-  get "/estimates/:id/edit" do
-    erb :"/estimates/edit.html"
-  end
-
-  # PATCH: /estimates/5
-  patch "/estimates/:id" do
-    redirect "/estimates/:id"
-  end
-
-  # DELETE: /estimates/5/delete
-  delete "/estimates/:id/delete" do
-    redirect "/estimates"
-  end
 end
